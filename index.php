@@ -5,7 +5,7 @@ include_once 'includes/header.php';
 
 <div class="welcome-box">
     <h1>Bienvenue sur Touche pas au klaxon !</h1>
-    <p>La plateforme de covoiturage réservée aux employés de l'entreprise.</p>
+    <p>La plateforme de covoiturage réservée à nos eployés !</p>
 
     <?php
    try {

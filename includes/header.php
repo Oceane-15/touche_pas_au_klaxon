@@ -1,6 +1,4 @@
 <?php
-// includes/header.php
-// Ces variables simuleront l'état de connexion pour les tests (à l'étape 4 on utilisera $_SESSION)
 $is_connected = false; 
 $is_admin = false; 
 $user_name = "Xxxxxxx Xxxxxx";
