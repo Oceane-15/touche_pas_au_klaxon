@@ -1,7 +1,10 @@
 <?php
-$is_connected = false; 
-$is_admin = false; 
-$user_name = "Xxxxxxx Xxxxxx";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$is_connected = isset($_SESSION['user_id']);
+$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+$user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
