@@ -1,9 +1,23 @@
+$couleur-fond: #f1f8fc;
+$couleur-primaire: #0074c7;
+$couleur-secondaire: #00497c;
+$couleur-sombre: #384050;
+$couleur-rouge: #cd2c2e;
+$couleur-vert: #82b864;
+
+$primary: $couleur-primaire;
+$secondary: $couleur-secondaire;
+$dark: $couleur-sombre;
+$body-bg: $couleur-fond;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
+
 .main-wrapper {
     max-width: 1100px;
     margin: 0 auto;
@@ -11,19 +25,20 @@ body {
 }
 
 .custom-header {
-    border: 2px solid #333;
+    border: 2px solid $couleur-sombre;
     border-radius: 15px;
     padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fcfdfe;
+    background-color: $couleur-fond;
     margin-bottom: 30px;
 }
+
 .brand {
     font-size: 20px;
     font-weight: 500;
-    color: #111;
+    color: $couleur-sombre;
 }
 
 .nav-controls {
@@ -31,11 +46,13 @@ body {
     align-items: center;
     gap: 15px;
 }
+
 .user-greeting {
     font-size: 16px;
-    color: #333;
+    color: $couleur-sombre;
 }
-.btn {
+
+.btn-custom {
     text-decoration: none;
     padding: 10px 24px;
     border-radius: 12px;
@@ -44,37 +61,47 @@ body {
     display: inline-block;
     transition: background 0.2s;
 }
+
 .btn-black {
-    background-color: #1a202c;
-    color: white;
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
+    
+    &:hover {
+        background-color: $couleur-primaire; 
+        color: $couleur-fond;
+    }
 }
+
 .btn-gray {
-    background-color: #718096;
-    color: white;
+    background-color: $couleur-sombre; 
+    color: $couleur-fond;
+    
+    &:hover {
+        background-color: $couleur-rouge; 
+        color: $couleur-fond;
+    }
 }
 
 .custom-footer {
     text-align: center;
     margin-top: 100px;
-    color: #333;
+    color: $couleur-sombre;
     font-size: 15px;
 }
-
-/* --- Page de Connexion --- */
 
 .login-container {
     max-width: 400px;
     margin: 60px auto;
     padding: 30px;
-    border: 2px solid #333;
+    border: 2px solid $couleur-sombre;
     border-radius: 15px;
-    background: #fcfdfe;
+    background: $couleur-fond;
 }
 
 .login-container h2 {
     text-align: center;
     margin-bottom: 25px;
-    color: #111;
+    color: $couleur-sombre;
 }
 
 .login-form {
@@ -96,14 +123,14 @@ body {
 
 .form-group input {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid $couleur-fond;
     border-radius: 8px;
     font-size: 15px;
     outline: none;
 }
 
 .form-group input:focus {
-    border-color: #333;
+    border-color: $couleur-sombre;
 }
 
 .btn-submit {
@@ -113,6 +140,9 @@ body {
     cursor: pointer;
     border: none;
     margin-top: 10px;
+    background-color: $couleur-primaire;
+    color: $couleur-fond;
+    border-radius: 8px;
 }
 
 .flash-message {
@@ -124,9 +154,9 @@ body {
 }
 
 .flash-error {
-    background-color: #f9ebea;
-    color: #c0392b;
-    border: 1px solid #e6b0aa;
+    background-color: $couleur-fond;
+    color: $couleur-rouge;
+    border: 1px solid $couleur-secondaire;
 }
 
 .main-container {
@@ -135,36 +165,32 @@ body {
 
 .main-container h2 {
     margin-bottom: 15px;
-    color: #333;
+    color: $couleur-sombre;
 }
 
 .trajets-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    background: white;
+    background: $couleur-fond;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     border-radius: 5px;
     overflow: hidden;
 }
 
 .trajets-table th {
-    background-color: #353b41;
-    border-bottom: 2px solid #ccc;
+    background-color: $couleur-sombre; 
+    border-bottom: 2px solid $couleur-fond;
     padding: 12px 10px;
     text-align: left;
     font-weight: bold;
-    color: white;
+    color: $couleur-fond;
 }
 
 .trajets-table td {
     padding: 12px 10px;
-    border-bottom: 1px solid #eee;
-    color: #555;
-}
-
-.trajets-table tr:hover {
-    background-color: #f9f9f9;
+    border-bottom: 1px solid $couleur-fond;
+    color: $couleur-sombre;
 }
 
 .trajets-table .text-center {
@@ -174,7 +200,7 @@ body {
 .trajets-table .no-data {
     padding: 20px;
     text-align: center;
-    color: #666;
+    color: $couleur-sombre;
     font-style: italic;
 }
 
@@ -191,46 +217,38 @@ th:last-child,
     text-decoration: none;
     margin: 0 6px;
     font-size: 18px;
-    color: #444444;
+    color: $couleur-sombre;
     transition: color 0.2s ease-in-out;
     display: inline-block;
     vertical-align: middle;
 }
 
-.actions-cell a {
-    text-decoration: none;
-    margin: 0 8px; 
-    font-size: 18px; 
-    color: #444444; 
-    transition: color 0.2s ease-in-out; 
-    display: inline-block;
-}
-
 .actions-cell a[title="Voir"]:hover {
-    color: #2196F3; 
+    color: $couleur-primaire;
 }
 
 .actions-cell a[title="Modifier"]:hover {
-    color: #4CAF50; 
+    color: $couleur-vert; 
 }
 
 .actions-cell a[title="Supprimer"]:hover {
-    color: #F44336; 
+    color: $couleur-rouge; 
 }
 
-/*Formulaire */
+/* Formulaire */
 .form-container {
     max-width: 600px;
     margin: 30px auto;
     padding: 20px;
-    background: white;
+    background: $couleur-fond;
+    border : 3px solid $couleur-sombre; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .form-container h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: $couleur-sombre;
 }
 
 .trajet-form .form-group {
@@ -241,13 +259,15 @@ th:last-child,
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #444;
+    color: $couleur-sombre;
 }
 
-.trajet-form select,.trajet-form input[type="datetime-local"],.trajet-form input[type="number"] {
+.trajet-form select,
+.trajet-form input[type="datetime-local"],
+.trajet-form input[type="number"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid $couleur-fond;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -276,22 +296,21 @@ th:last-child,
 }
 
 .btn-submit-trajet {
-    background-color: #1a1a1a;
-    color: white;
-}
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
 
-.btn-submit-trajet:hover {
-    background-color: #333333;
+    &:hover {
+        background-color: $couleur-primaire;
+        color: $couleur-fond; 
+    }
 }
 
 .btn-cancel-trajet {
-    background-color: grey;
-    color: white;
-    border: 1px solid #cccccc;
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
 }
 
 .btn-cancel-trajet:hover {
-    background-color: rgb(141, 137, 137);
-    color: white;
-    border-color: #adadad;
+    background-color: $couleur-rouge;
+    color: $couleur-fond;
 }

@@ -14,12 +14,18 @@ try {
             t.date_heure_depart,
             t.date_heure_arrivee,
             t.places_disponibles,
+            t.places_totales,
             t.id_utilisateur_auteur,
             a_depart.nom_ville AS ville_depart,
-            a_arrivee.nom_ville AS ville_arrivee
+            a_arrivee.nom_ville AS ville_arrivee,
+            u.nom AS auteur_nom,
+            u.prenom AS auteur_prenom,
+            u.telephone AS auteur_telephone,
+            u.email AS auteur_email
         FROM trajet t
         JOIN agence a_depart ON t.id_agence_depart = a_depart.id_agence
         JOIN agence a_arrivee ON t.id_agence_arrivee = a_arrivee.id_agence
+        JOIN utilisateur u ON t.id_utilisateur_auteur = u.id_utilisateur
         ORDER BY t.date_heure_depart ASC
     ";
     $stmt = $pdo->query($query_trajets);
@@ -35,8 +41,6 @@ include_once 'includes/header.php';
 
     <?php if ($is_connected): ?>
         <h2>Trajets proposés</h2>
-    <?php else: ?>
-        <h2 class="visitor-message" style="font-size: 1.5rem; font-weight: normal; margin-bottom: 20px;">Pour obtenir plus d'informations sur un trajet, veuillez vous connecter</h2>
     <?php endif; ?>
     
     <?php if (isset($erreur_trajets)): ?>
@@ -73,7 +77,9 @@ include_once 'includes/header.php';
                             
                             <?php if ($is_connected): ?>
                                 <td class="actions-cell">
-                                    <a href="voir_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Voir"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="#" title="Voir" data-bs-toggle="modal" data-bs-target="#modalTrajet<?php echo $trajet['id_trajet']; ?>">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                     
                                     <?php if ($trajet['id_utilisateur_auteur'] == $_SESSION['user_id']): ?>
                                         <a href="modifier_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Modifier"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -82,6 +88,30 @@ include_once 'includes/header.php';
                                 </td>
                             <?php endif; ?>
                         </tr>
+
+                        <?php if ($is_connected): ?>
+                            <div class="modal fade" id="modalTrajet<?php echo $trajet['id_trajet']; ?>" tabindex="-1" aria-labelledby="modalLabel<?php echo $trajet['id_trajet']; ?>" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary text-white">
+                                            <h5 class="modal-title" id="modalLabel<?php echo $trajet['id_trajet']; ?>">Détails du trajet</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-dark">
+                                            <p><strong>Auteur :</strong> <?php echo htmlspecialchars($trajet['auteur_prenom'] . ' ' . $trajet['auteur_nom']); ?></p>
+                                            <p><strong>Téléphone :</strong> <?php echo htmlspecialchars($trajet['auteur_telephone']); ?></p>
+                                            <p><strong>Email :</strong> <?php echo htmlspecialchars($trajet['auteur_email']); ?></p>
+                                            <hr>
+                                            <p><strong>Nombre total de places :</strong> <?php echo htmlspecialchars($trajet['places_totales']); ?></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr class="no-data">
