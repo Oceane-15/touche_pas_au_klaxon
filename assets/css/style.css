@@ -128,3 +128,52 @@ body {
     color: #c0392b;
     border: 1px solid #e6b0aa;
 }
+
+.main-container {
+    margin-top: 30px;
+}
+
+.main-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.trajets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.trajets-table th {
+    background-color: #353b41;
+    border-bottom: 2px solid #ccc;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+
+.trajets-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+.trajets-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.trajets-table .text-center {
+    text-align: center;
+}
+
+.trajets-table .no-data {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
