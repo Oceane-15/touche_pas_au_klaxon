@@ -1,0 +1,316 @@
+$couleur-fond: #f1f8fc;
+$couleur-primaire: #0074c7;
+$couleur-secondaire: #00497c;
+$couleur-sombre: #384050;
+$couleur-rouge: #cd2c2e;
+$couleur-vert: #82b864;
+
+$primary: $couleur-primaire;
+$secondary: $couleur-secondaire;
+$dark: $couleur-sombre;
+$body-bg: $couleur-fond;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.custom-header {
+    border: 2px solid $couleur-sombre;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $couleur-fond;
+    margin-bottom: 30px;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 500;
+    color: $couleur-sombre;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-greeting {
+    font-size: 16px;
+    color: $couleur-sombre;
+}
+
+.btn-custom {
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: normal;
+    display: inline-block;
+    transition: background 0.2s;
+}
+
+.btn-black {
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
+    
+    &:hover {
+        background-color: $couleur-primaire; 
+        color: $couleur-fond;
+    }
+}
+
+.btn-gray {
+    background-color: $couleur-sombre; 
+    color: $couleur-fond;
+    
+    &:hover {
+        background-color: $couleur-rouge; 
+        color: $couleur-fond;
+    }
+}
+
+.custom-footer {
+    text-align: center;
+    margin-top: 100px;
+    color: $couleur-sombre;
+    font-size: 15px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    border: 2px solid $couleur-sombre;
+    border-radius: 15px;
+    background: $couleur-fond;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: $couleur-sombre;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid $couleur-fond;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: $couleur-sombre;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    background-color: $couleur-primaire;
+    color: $couleur-fond;
+    border-radius: 8px;
+}
+
+.flash-message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.flash-error {
+    background-color: $couleur-fond;
+    color: $couleur-rouge;
+    border: 1px solid $couleur-secondaire;
+}
+
+.main-container {
+    margin-top: 30px;
+}
+
+.main-container h2 {
+    margin-bottom: 15px;
+    color: $couleur-sombre;
+}
+
+.trajets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: $couleur-fond;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.trajets-table th {
+    background-color: $couleur-sombre; 
+    border-bottom: 2px solid $couleur-fond;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: bold;
+    color: $couleur-fond;
+}
+
+.trajets-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid $couleur-fond;
+    color: $couleur-sombre;
+}
+
+.trajets-table .text-center {
+    text-align: center;
+}
+
+.trajets-table .no-data {
+    padding: 20px;
+    text-align: center;
+    color: $couleur-sombre;
+    font-style: italic;
+}
+
+th:last-child, 
+.actions-cell {
+    text-align: center;
+    width: 120px; 
+    min-width: 120px;
+    max-width: 120px;
+    padding: 10px 0; 
+}
+
+.actions-cell a {
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 18px;
+    color: $couleur-sombre;
+    transition: color 0.2s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.actions-cell a[title="Voir"]:hover {
+    color: $couleur-primaire;
+}
+
+.actions-cell a[title="Modifier"]:hover {
+    color: $couleur-vert; 
+}
+
+.actions-cell a[title="Supprimer"]:hover {
+    color: $couleur-rouge; 
+}
+
+/* Formulaire */
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: $couleur-fond;
+    border : 3px solid $couleur-sombre; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: $couleur-sombre;
+}
+
+.trajet-form .form-group {
+    margin-bottom: 15px;
+}
+
+.trajet-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: $couleur-sombre;
+}
+
+.trajet-form select,
+.trajet-form input[type="datetime-local"],
+.trajet-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $couleur-fond;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 15px;               
+    margin-top: 30px;
+}
+
+.btn-submit-trajet,
+.btn-cancel-trajet {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    border: none;
+}
+
+.btn-submit-trajet {
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
+
+    &:hover {
+        background-color: $couleur-primaire;
+        color: $couleur-fond; 
+    }
+}
+
+.btn-cancel-trajet {
+    background-color: $couleur-sombre;
+    color: $couleur-fond;
+}
+
+.btn-cancel-trajet:hover {
+    background-color: $couleur-rouge;
+    color: $couleur-fond;
+}

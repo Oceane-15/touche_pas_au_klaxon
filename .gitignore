@@ -1,0 +1,10 @@
+# Dépendances (Bootstrap, etc.)
+node_modules/
+
+# Fichiers de configuration système
+.DS_Store
+Thumbs.db
+
+# Fichiers de Sass
+.sass-cache/
+*.css.map

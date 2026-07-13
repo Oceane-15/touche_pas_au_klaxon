@@ -12,7 +12,8 @@ $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Touche pas au klaxon</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/touche_pas_au_klaxon/assets/css/bootstrap-custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="main-wrapper">
@@ -28,7 +29,7 @@ $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user
                         <a href="admin_agences.php" class="btn btn-gray">Agences</a>
                         <a href="admin_trajets.php" class="btn btn-gray">Trajets</a>
                     <?php else: ?>
-                        <a href="create_trajet.php" class="btn btn-black">Créer un trajet</a>
+                        <a href="trajets.php" class="btn btn-black">Créer un trajet</a>
                     <?php endif; ?>
                     
                     <span class="user-greeting">Bonjour <?php echo htmlspecialchars($user_name); ?></span>
