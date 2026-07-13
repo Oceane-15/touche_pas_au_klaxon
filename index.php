@@ -5,23 +5,19 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once 'includes/db.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
+$is_connected = isset($_SESSION['user_id']);
 
 try {
     $query_trajets = "
         SELECT 
             t.id_trajet,
             t.date_heure_depart,
+            t.date_heure_arrivee,
             t.places_disponibles,
-            u.nom AS conducteur_nom,
-            u.prenom AS conducteur_prenom,
+            t.id_utilisateur_auteur,
             a_depart.nom_ville AS ville_depart,
             a_arrivee.nom_ville AS ville_arrivee
         FROM trajet t
-        JOIN utilisateur u ON t.id_utilisateur_auteur = u.id_utilisateur
         JOIN agence a_depart ON t.id_agence_depart = a_depart.id_agence
         JOIN agence a_arrivee ON t.id_agence_arrivee = a_arrivee.id_agence
         ORDER BY t.date_heure_depart ASC
@@ -34,48 +30,62 @@ try {
 
 include_once 'includes/header.php';
 ?>
+
 <div class="main-container">
-    <h2>Trajets proposés</h2>
+
+    <?php if ($is_connected): ?>
+        <h2>Trajets proposés</h2>
+    <?php else: ?>
+        <h2 class="visitor-message" style="font-size: 1.5rem; font-weight: normal; margin-bottom: 20px;">Pour obtenir plus d'informations sur un trajet, veuillez vous connecter</h2>
+    <?php endif; ?>
     
     <?php if (isset($erreur_trajets)): ?>
-        <p class="status-error">Erreur lors de la récupération des trajets : <?php echo $erreur_trajets; ?></p>
+        <p class="status-error">Erreur : <?php echo $erreur_trajets; ?></p>
     <?php else: ?>
         <table class="trajets-table">
             <thead>
                 <tr>
-                    <th>Conducteur</th>
                     <th>Départ</th>
-                    <th>Arrivée</th>
-                    <th>Date & Heure</th>
-                    <th class="text-center">Places restantes</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Places</th>
+                    <?php if ($is_connected): ?>
+                        <th style="text-align: center;">Actions</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
                 <?php if (count($trajets) > 0): ?>
                     <?php foreach ($trajets as $trajet): ?>
                         <tr>
-                            <td>
-                                <?php echo htmlspecialchars($trajet['conducteur_prenom'] . ' ' . $trajet['conducteur_nom']); ?>
-                            </td>
-                            <td>
-                                <?php echo htmlspecialchars($trajet['ville_depart']); ?>
-                            </td>
-                            <td>
-                                <?php echo htmlspecialchars($trajet['ville_arrivee']); ?>
-                            </td>
-                            <td>
-                                <?php echo htmlspecialchars(date('d/m/Y H:i', strtotime($trajet['date_heure_depart']))); ?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo htmlspecialchars($trajet['places_disponibles']); ?>
-                            </td>
+                            <td><?php echo htmlspecialchars($trajet['ville_depart']); ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($trajet['date_heure_depart'])); ?></td>
+                            <td><?php echo date('H:i', strtotime($trajet['date_heure_depart'])); ?></td>
+                            
+                            <td><?php echo htmlspecialchars($trajet['ville_arrivee']); ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($trajet['date_heure_arrivee'])); ?></td>
+                            <td><?php echo date('H:i', strtotime($trajet['date_heure_arrivee'])); ?></td>
+                            
+                            <td><?php echo htmlspecialchars($trajet['places_disponibles']); ?></td>
+                            
+                            <?php if ($is_connected): ?>
+                                <td class="actions-cell">
+                                    <a href="voir_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Voir"><i class="fa-solid fa-eye"></i></a>
+                                    
+                                    <?php if ($trajet['id_utilisateur_auteur'] == $_SESSION['user_id']): ?>
+                                        <a href="modifier_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Modifier"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="supprimer_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Supprimer" onclick="return confirm('Supprimer ce trajet ?');"><i class="fa-solid fa-trash"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr>
-                        <td colspan="5" class="no-data">
-                            Aucun trajet n'est disponible pour le moment.
-                        </td>
+                    <tr class="no-data">
+                        <td colspan="<?php echo $is_connected ? '8' : '7'; ?>">Aucun trajet proposé pour le moment.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -83,6 +93,4 @@ include_once 'includes/header.php';
     <?php endif; ?>
 </div>
 
-<?php 
-include_once 'includes/footer.php';
-?>
+<?php include_once 'includes/footer.php'; ?>
