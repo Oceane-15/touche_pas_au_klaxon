@@ -314,3 +314,46 @@ th:last-child,
     background-color: $couleur-rouge;
     color: $couleur-fond;
 }
+
+
+.admin-badge {
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.status-error {
+    color: $couleur-rouge;
+    font-weight: bold;
+}
+
+.btn-admin {
+    background-color: $couleur-sombre; 
+    color: $couleur-fond;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-admin:hover {
+    background-color: $couleur-primaire;
+    color: $couleur-fond;
+    text-decoration: none;
+}
+
+.cell-ville {
+    text-align: center;
+}
+
+.form-agence-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-agence-admin .row-gap-sm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
