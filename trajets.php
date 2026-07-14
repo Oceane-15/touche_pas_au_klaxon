@@ -13,6 +13,8 @@ if (!isset($_SESSION['user_id'])) {
 $error_message = "";
 $success_message = "";
 
+$agences = [];
+
 try {
     $stmt = $pdo->query("SELECT * FROM agence ORDER BY nom_ville ASC");
     $agences = $stmt->fetchAll();

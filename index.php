@@ -7,6 +7,8 @@ require_once 'includes/db.php';
 
 $is_connected = isset($_SESSION['user_id']);
 
+$trajets = [];
+
 try {
     $query_trajets = "
         SELECT 

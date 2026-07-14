@@ -341,3 +341,19 @@ th:last-child,
     color: $couleur-fond;
     text-decoration: none;
 }
+
+.cell-ville {
+    text-align: center;
+}
+
+.form-agence-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-agence-admin .row-gap-sm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
