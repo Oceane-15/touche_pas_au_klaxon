@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $id_trajet = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $user_id = $_SESSION['user_id'];
-$is_admin = isset($_SESSION['est_admin']) && $_SESSION['est_admin'] == 1;
+$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1;
 
 try {
     $stmt = $pdo->prepare("SELECT * FROM trajet WHERE id_trajet = ?");

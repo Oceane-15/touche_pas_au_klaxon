@@ -81,7 +81,7 @@ include_once 'includes/header.php';
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                     
-                                    <?php if ($trajet['id_utilisateur_auteur'] == $_SESSION['user_id']): ?>
+                                    <?php if ((isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) || $trajet['id_utilisateur_auteur'] == $_SESSION['user_id']): ?>
                                         <a href="modif_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Modifier"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a href="supprimer_trajet.php?id=<?php echo $trajet['id_trajet']; ?>" title="Supprimer" onclick="return confirm('Supprimer ce trajet ?');"><i class="fa-solid fa-trash"></i></a>
                                     <?php endif; ?>
