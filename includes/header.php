@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $is_connected = isset($_SESSION['user_id']);
-$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+$is_admin = isset($_SESSION['user_role']) && (int)$_SESSION['user_role'] === 1;
 $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] : '';
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user
 <body>
     <div class="main-wrapper">
         <header class="custom-header">
-            <div class="brand">Touche pas au klaxon</div>
+            <a href="index.php" class="brand" style="text-decoration: none; color: inherit;">Touche pas au klaxon</a>
             
             <div class="nav-controls">
                 <?php if (!$is_connected): ?>
@@ -27,7 +27,7 @@ $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user
                     <?php if ($is_admin): ?>
                         <a href="admin_utilisateurs.php" class="btn btn-gray">Utilisateurs</a>
                         <a href="admin_agences.php" class="btn btn-gray">Agences</a>
-                        <a href="admin_trajets.php" class="btn btn-gray">Trajets</a>
+                        <a href="index.php" class="btn btn-gray">Trajets</a>
                     <?php else: ?>
                         <a href="trajets.php" class="btn btn-black">Créer un trajet</a>
                     <?php endif; ?>
