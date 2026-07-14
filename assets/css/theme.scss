@@ -314,3 +314,14 @@ th:last-child,
     background-color: $couleur-rouge;
     color: $couleur-fond;
 }
+
+
+.admin-badge {
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.status-error {
+    color: $couleur-rouge;
+    font-weight: bold;
+}
