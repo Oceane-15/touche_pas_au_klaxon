@@ -1,6 +1,7 @@
 <?php
 
 require_once 'includes/db.php';
+/** @var PDO $pdo */
 
 if (session_status() === PHP_SESSION_NONE) { 
     session_start();
