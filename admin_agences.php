@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once 'includes/db.php';
+/** @var PDO $pdo */
 
 $is_admin = isset($_SESSION['user_role']) && (int)$_SESSION['user_role'] === 1;
 if (!$is_admin) {

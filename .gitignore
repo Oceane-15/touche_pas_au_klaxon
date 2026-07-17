@@ -8,3 +8,6 @@ Thumbs.db
 # Fichiers de Sass
 .sass-cache/
 *.css.map
+
+/vendor/
+.phpunit.result.cache

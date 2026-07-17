@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once 'includes/db.php';
+/** @var PDO $pdo */
 
 $is_connected = isset($_SESSION['user_id']);
 
