@@ -29,7 +29,7 @@ $user_name = $is_connected ? $_SESSION['user_firstname'] . ' ' . $_SESSION['user
                     <?php if ($is_admin): ?>
                         <a href="/admin/utilisateurs" class="btn btn-black">Utilisateurs</a>
                         <a href="/admin/agences" class="btn btn-black">Agences</a>
-                        <a href="/" class="btn btn-black">Trajets</a>
+                        <a href="/trajets" class="btn btn-black">Trajets</a>
                     <?php else: ?>
                         <a href="/trajets" class="btn btn-black">Créer un trajet</a>
                     <?php endif; ?>
