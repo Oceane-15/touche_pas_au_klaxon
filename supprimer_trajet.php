@@ -7,7 +7,7 @@ require_once 'includes/db.php';
 /** @var PDO $pdo */
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /login');
     exit();
 }
 
@@ -21,19 +21,19 @@ try {
     $trajet = $stmt->fetch();
 
     if (!$trajet) {
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
     if (!$is_admin && $trajet['id_utilisateur_auteur'] != $user_id) {
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
     $stmt_delete = $pdo->prepare("DELETE FROM trajet WHERE id_trajet = ?");
     $stmt_delete->execute([$id_trajet]);
 
-    header('Location: index.php');
+    header('Location: /');
     exit();
 
 } catch (Exception $e) {

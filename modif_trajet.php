@@ -7,7 +7,7 @@ require_once 'includes/db.php';
 /** @var PDO $pdo */
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: connexion.php');
+    header('Location: /login');
     exit();
 }
 
@@ -21,12 +21,12 @@ try {
     $trajet = $stmt->fetch();
 
     if (!$trajet) {
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
     if (!$is_admin && $trajet['id_utilisateur_auteur'] != $user_id) {
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id_trajet
             ]);
 
-            header('Location: index.php');
+            header('Location: /');
             exit();
         } catch (Exception $e) {
             $erreur = "Erreur lors de la modification : " . $e->getMessage();
@@ -136,7 +136,7 @@ include_once 'includes/header.php';
 
             <div class="form-actions">
                 <button type="submit" class="btn-submit-trajet">Enregistrer les modifications</button>
-                <a href="index.php" class="btn-cancel-trajet">Annuler</a>
+                <a href="/" class="btn-cancel-trajet">Annuler</a>
             </div>
         </form>
     </div>

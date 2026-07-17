@@ -8,7 +8,7 @@ require_once 'includes/db.php';
 
 $is_admin = isset($_SESSION['user_role']) && (int)$_SESSION['user_role'] === 1;
 if (!$is_admin) {
-    header('Location: index.php');
+    header('Location: /');
     exit();
 }
 
@@ -117,7 +117,7 @@ require_once 'includes/header.php';
             <div class="card shadow-sm border-0 bg-light p-3">
                 <?php if ($action === 'edit' && $agence_to_edit): ?>
                     <h4 class="mb-3">Modifier l'agence</h4>
-                    <form action="admin_agences.php" method="POST" class="form-agence-admin">
+                    <form action="/admin/agences" method="POST" class="form-agence-admin">
                         <input type="hidden" name="id_agence" value="<?php echo $agence_to_edit['id_agence']; ?>">
                         <div class="form-group row-gap-sm">
                             <label for="nom_ville" class="fw-bold fs-6">Nom de la ville</label>
@@ -125,12 +125,12 @@ require_once 'includes/header.php';
                         </div>
                         <div class="d-flex gap-2 mt-3">
                             <button type="submit" name="edit_agence" class="btn btn-primary flex-grow-1">Enregistrer</button>
-                            <a href="admin_agences.php" class="btn btn-secondary">Annuler</a>
+                            <a href="/admin/agences" class="btn btn-secondary">Annuler</a>
                         </div>
                     </form>
                 <?php else: ?>
                     <h4 class="mb-3">Ajouter une agence</h4>
-                    <form action="admin_agences.php" method="POST" class="form-agence-admin">
+                    <form action="/admin/agences" method="POST" class="form-agence-admin">
                         <div class="form-group row-gap-sm">
                             <label for="nom_ville" class="fw-bold fs-6">Nom de la ville</label>
                             <input type="text" id="nom_ville" name="nom_ville" class="form-control" placeholder="Ex: Paris, Lyon..." required>
@@ -166,12 +166,12 @@ require_once 'includes/header.php';
                                         </td>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
-                                                <a href="admin_agences.php?action=edit&id=<?php echo $agence['id_agence']; ?>" 
+                                                <a href="/admin/agences?action=edit&id=<?php echo $agence['id_agence']; ?>" 
                                                    class="btn btn-sm btn-outline-primary" 
                                                    title="Modifier l'agence">
                                                     <i class="fa-solid fa-pen"></i> Modifier
                                                 </a>
-                                                <a href="admin_agences.php?action=delete&id=<?php echo $agence['id_agence']; ?>" 
+                                                <a href="/admin/agences?action=delete&id=<?php echo $agence['id_agence']; ?>" 
                                                    class="btn btn-sm btn-danger" 
                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer l\'agence « <?php echo htmlspecialchars($agence['nom_ville']); ?> » ?');"
                                                    title="Supprimer l'agence">

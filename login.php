@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_lastname'] = $user['nom'];
             $_SESSION['user_role'] = $user['est_admin'];
 
-            header('Location: index.php');
+            header('Location: /');
             exit;
         } else {
             $error_message = "Email ou mot de passe incorrect.";
@@ -54,7 +54,7 @@ include_once 'includes/header.php';
         </div>
     <?php endif; ?>
 
-    <form action="login.php" method="POST" class="login-form">
+    <form action="/login" method="POST" class="login-form">
         <div class="form-group">
             <label for="email">Adresse email :</label>
             <input type="email" id="email" name="email" required>

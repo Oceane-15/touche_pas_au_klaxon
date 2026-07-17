@@ -7,7 +7,7 @@ require_once 'includes/db.php';
 /** @var PDO $pdo */
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /login');
     exit;
 }
 
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':id_arr'            => $id_agence_arrivee
             ]);
 
-            header('Location: index.php?success=1');
+            header('Location: /?success=1');
             exit;
 
         } catch (Exception $e) {
@@ -73,7 +73,7 @@ include_once 'includes/header.php';
         <p class="status-error"><?php echo htmlspecialchars($error_message); ?></p>
     <?php endif; ?>
 
-    <form action="trajets.php" method="POST" class="trajet-form">
+    <form action="/trajets" method="POST" class="trajet-form">
         <div class="form-group">
             <label for="id_agence_depart">Ville de départ :</label>
             <select name="id_agence_depart" id="id_agence_depart" required>
@@ -111,7 +111,7 @@ include_once 'includes/header.php';
 
         <div class="form-actions">
     <button type="submit" class="btn btn-submit-trajet">Publier le trajet</button>
-    <a href="index.php" class="btn btn-cancel-trajet">Annuler</a>
+    <a href="/" class="btn btn-cancel-trajet">Annuler</a>
 </div>
     </form>
 </div>

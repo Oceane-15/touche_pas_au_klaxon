@@ -8,7 +8,7 @@ require_once 'includes/db.php';
 
 $is_admin = isset($_SESSION['user_role']) && (int)$_SESSION['user_role'] === 1;
 if (!$is_admin) {
-    header('Location: index.php');
+    header('Location: /');
     exit();
 }
 
@@ -97,7 +97,7 @@ require_once 'includes/header.php';
                                 </td>
                                 <td>
                                     <?php if ($user['id_utilisateur'] !== $_SESSION['user_id']): ?>
-                                        <a href="admin_utilisateurs.php?action=delete&id=<?php echo $user['id_utilisateur']; ?>" 
+                                        <a href="/admin/utilisateurs?action=delete&id=<?php echo $user['id_utilisateur']; ?>" 
                                            class="btn btn-sm btn-danger" 
                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');"
                                            title="Supprimer l'utilisateur">
