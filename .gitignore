@@ -1,4 +1,4 @@
-# Dépendances (Bootstrap, etc.)
+# Dépendances
 node_modules/
 
 # Fichiers de configuration système
@@ -9,5 +9,6 @@ Thumbs.db
 .sass-cache/
 *.css.map
 
+# Divers
 /vendor/
 .phpunit.result.cache

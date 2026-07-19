@@ -52,111 +52,11 @@ body {
     color: $couleur-sombre;
 }
 
-.btn-custom {
-    text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: normal;
-    display: inline-block;
-    transition: background 0.2s;
-}
-
-.btn-black {
-    background-color: $couleur-sombre;
-    color: $couleur-fond;
-    
-    &:hover {
-        background-color: $couleur-primaire; 
-        color: $couleur-fond;
-    }
-}
-
-.btn-gray {
-    background-color: $couleur-sombre; 
-    color: $couleur-fond;
-    
-    &:hover {
-        background-color: $couleur-rouge; 
-        color: $couleur-fond;
-    }
-}
-
 .custom-footer {
     text-align: center;
     margin-top: 100px;
     color: $couleur-sombre;
     font-size: 15px;
-}
-
-.login-container {
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 30px;
-    border: 2px solid $couleur-sombre;
-    border-radius: 15px;
-    background: $couleur-fond;
-}
-
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: $couleur-sombre;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.form-group label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.form-group input {
-    padding: 10px;
-    border: 1px solid $couleur-fond;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-}
-
-.form-group input:focus {
-    border-color: $couleur-sombre;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    margin-top: 10px;
-    background-color: $couleur-primaire;
-    color: $couleur-fond;
-    border-radius: 8px;
-}
-
-.flash-message {
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.flash-error {
-    background-color: $couleur-fond;
-    color: $couleur-rouge;
-    border: 1px solid $couleur-secondaire;
 }
 
 .main-container {
@@ -166,42 +66,6 @@ body {
 .main-container h2 {
     margin-bottom: 15px;
     color: $couleur-sombre;
-}
-
-.trajets-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    background: $couleur-fond;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.trajets-table th {
-    background-color: $couleur-sombre; 
-    border-bottom: 2px solid $couleur-fond;
-    padding: 12px 10px;
-    text-align: left;
-    font-weight: bold;
-    color: $couleur-fond;
-}
-
-.trajets-table td {
-    padding: 12px 10px;
-    border-bottom: 1px solid $couleur-fond;
-    color: $couleur-sombre;
-}
-
-.trajets-table .text-center {
-    text-align: center;
-}
-
-.trajets-table .no-data {
-    padding: 20px;
-    text-align: center;
-    color: $couleur-sombre;
-    font-style: italic;
 }
 
 th:last-child, 
@@ -314,7 +178,6 @@ th:last-child,
     background-color: $couleur-rouge;
     color: $couleur-fond;
 }
-
 
 .admin-badge {
     font-size: 0.9rem;
