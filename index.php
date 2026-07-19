@@ -4,6 +4,7 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
 }
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/includes/db.php'; 
+/** @var PDO $pdo */
 
 use Buki\Router\Router;
 
@@ -28,8 +29,11 @@ $router->post('/login', function() use ($pdo) {
 });
 
 $router->get('/logout', function() use ($pdo) {
-    require_once __DIR__ . '/logout.php';
-});
+    require_once __DIR__ . '/controllers/AuthController.php';
+    $controller = new AuthController($pdo, false);
+    $controller->logout();
+}); 
+    
 
 $router->get('/trajets', function() use ($pdo) {
     require_once __DIR__ . '/controllers/TrajetController.php';

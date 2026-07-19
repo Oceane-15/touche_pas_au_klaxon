@@ -1,5 +1,6 @@
 <?php include_once 'includes/header.php'; 
 /** @var array $trajets */
+/** @var bool $is_connected */
 ?>
 
 <div class="main-container">
