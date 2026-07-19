@@ -46,19 +46,19 @@ $router->post('/trajets', function() use ($pdo) {
     $controller->proposer();
 });
 
-$router->get('/trajets/modifier', function() use ($pdo) {
+$router->get('/trajet/modifier', function() use ($pdo) {
     require_once __DIR__ . '/controllers/TrajetController.php';
     $controller = new TrajetController($pdo);
     $controller->edit();
 });
 
-$router->post('/trajets/modifier', function() use ($pdo) {
+$router->post('/trajet/modifier', function() use ($pdo) {
     require_once __DIR__ . '/controllers/TrajetController.php';
     $controller = new TrajetController($pdo);
     $controller->edit();
 });
 
-$router->get('/trajets/supprimer', function() use ($pdo) {
+$router->get('/trajet/supprimer', function() use ($pdo) {
     require_once __DIR__ . '/controllers/TrajetController.php';
     $controller = new TrajetController($pdo);
     $controller->delete();
