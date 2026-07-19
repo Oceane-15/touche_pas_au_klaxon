@@ -34,6 +34,8 @@ class AuthController {
                     $_SESSION['user_firstname'] = $user['prenom'];
                     $_SESSION['user_lastname'] = $user['nom'];
                     $_SESSION['user_role'] = $user['est_admin'];
+                    $_SESSION['user_email'] = $user['email'];
+                    $_SESSION['user_phone'] = $user['telephone'] ?? 'Non renseigné';
 
                     header('Location: /');
                     exit;

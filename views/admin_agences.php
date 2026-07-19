@@ -2,8 +2,6 @@
 /** @var string $action */
 /** @var array $agences */
 /** @var array|null $agence_to_edit */
-/** @var string $message */
-/** @var string $error */
 ?>
 
 <div class="container mt-4">
@@ -12,18 +10,14 @@
         <span class="badge bg-secondary"><?php echo count($agences); ?> agence(s) installée(s)</span>
     </div>
 
-    <?php if ($message): ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?php echo htmlspecialchars($message); ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($error): ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?php echo htmlspecialchars($error); ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    <?php if (isset($_SESSION['flash'])): ?>
+        <?php foreach ($_SESSION['flash'] as $type => $msg): ?>
+            <div class="alert alert-<?php echo $type; ?> alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars($msg); ?>
+                <button type="button" class="btn-close" onclick="this.parentElement.remove();" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['flash']); ?>
     <?php endif; ?>
 
     <div class="row g-4">

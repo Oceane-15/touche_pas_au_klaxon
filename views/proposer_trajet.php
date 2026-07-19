@@ -1,5 +1,6 @@
 <?php include_once 'includes/header.php'; 
-/** @var array $agences */?>
+/** @var array $agences */
+?>
 
 <div class="form-container">
     <h2>Proposer un nouveau trajet</h2>
@@ -9,6 +10,30 @@
     <?php endif; ?>
 
     <form action="/trajets" method="POST" class="trajet-form">
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <label>Prénom du conducteur :</label>
+                <input type="text" class="form-control" value="<?php echo htmlspecialchars($_SESSION['user_firstname'] ?? ''); ?>" readonly disabled>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Nom du conducteur :</label>
+                <input type="text" class="form-control" value="<?php echo htmlspecialchars($_SESSION['user_lastname'] ?? ''); ?>" readonly disabled>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <label>Adresse email :</label>
+                <input type="email" class="form-control" value="<?php echo htmlspecialchars($_SESSION['user_email'] ?? ''); ?>" readonly disabled>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Numéro de téléphone :</label>
+                <input type="text" class="form-control" value="<?php echo htmlspecialchars($_SESSION['user_phone'] ?? ''); ?>" readonly disabled>
+            </div>
+        </div>
+
+        <hr>
+
         <div class="form-group">
             <label for="id_agence_depart">Ville de départ :</label>
             <select name="id_agence_depart" id="id_agence_depart" required>

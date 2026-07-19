@@ -35,13 +35,12 @@ include_once 'includes/header.php';
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Rôle</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($utilisateurs)): ?>
                         <tr>
-                            <td colspan="5" class="text-center py-4 text-muted">Aucun utilisateur trouvé.</td>
+                            <td colspan="4" class="text-center py-4 text-muted">Aucun utilisateur trouvé.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($utilisateurs as $user): ?>
@@ -56,18 +55,6 @@ include_once 'includes/header.php';
                                         <span class="badge bg-danger">Administrateur</span>
                                     <?php else: ?>
                                         <span class="badge bg-primary">Collaborateur</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <?php if ($user['id_utilisateur'] !== $_SESSION['user_id']): ?>
-                                        <a href="/admin/utilisateurs?action=delete&id=<?php echo $user['id_utilisateur']; ?>" 
-                                           class="btn btn-sm btn-danger" 
-                                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');"
-                                           title="Supprimer l'utilisateur">
-                                            <i class="fa-solid fa-trash"></i> Supprimer
-                                        </a>
-                                    <?php else: ?>
-                                        <span class="text-muted small"><em>Votre compte</em></span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
