@@ -16,11 +16,17 @@ $router->get('/', function() use ($pdo) {
 });
 
 $router->get('/login', function() use ($pdo) {
-    require_once __DIR__ . '/login.php';
+    require_once __DIR__ . '/controllers/AuthController.php';
+    $controller = new AuthController($pdo);
+    $controller->login();
 });
+
 $router->post('/login', function() use ($pdo) {
-    require_once __DIR__ . '/login.php';
+    require_once __DIR__ . '/controllers/AuthController.php';
+    $controller = new AuthController($pdo);
+    $controller->login();
 });
+
 $router->get('/logout', function() use ($pdo) {
     require_once __DIR__ . '/logout.php';
 });
@@ -36,11 +42,22 @@ $router->post('/trajets', function() use ($pdo) {
     $controller->proposer();
 });
 
-$router->any('/trajet/modifier', function() use ($pdo) {
-    require_once __DIR__ . '/modif_trajet.php';
+$router->get('/trajets/modifier', function() use ($pdo) {
+    require_once __DIR__ . '/controllers/TrajetController.php';
+    $controller = new TrajetController($pdo);
+    $controller->edit();
 });
-$router->get('/trajet/supprimer', function() use ($pdo) {
-    require_once __DIR__ . '/supprimer_trajet.php';
+
+$router->post('/trajets/modifier', function() use ($pdo) {
+    require_once __DIR__ . '/controllers/TrajetController.php';
+    $controller = new TrajetController($pdo);
+    $controller->edit();
+});
+
+$router->get('/trajets/supprimer', function() use ($pdo) {
+    require_once __DIR__ . '/controllers/TrajetController.php';
+    $controller = new TrajetController($pdo);
+    $controller->delete();
 });
 
 $router->any('/admin/agences', function() use ($pdo) {
